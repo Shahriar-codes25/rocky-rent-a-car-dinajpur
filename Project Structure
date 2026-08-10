@@ -1,13 +1,12 @@
-rocky-rent-a-car/
+rocky-rent-a-car
 │
 ├── index.html
 ├── style.css
 ├── script.js
 │
-├── images/
-│   ├── car-front.jpg
-│   ├── car-interior-1.jpg
-│   ├── car-dashboard.jpg
-│   └── car-seats.jpg
-│
-└── README.md
+└── images
+    │
+    ├── car-front.jpg
+    ├── car-interior-1.jpg
+    ├── car-dashboard.jpg
+    └── car-seats.jpg
