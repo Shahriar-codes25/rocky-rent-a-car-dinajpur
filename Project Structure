@@ -4,8 +4,7 @@ rocky-rent-a-car
 ├── style.css
 ├── script.js
 │
-└── images
-    │
+└── images/
     ├── car-front.jpg
     ├── car-interior-1.jpg
     ├── car-dashboard.jpg
