@@ -1,278 +1,100 @@
-/* =========================================
+document.addEventListener("DOMContentLoaded", function () {
+
+```
+/* =========================
    MOBILE MENU
-========================================= */
+========================= */
 
-const menuToggle =
-    document.getElementById("menuToggle");
+const menuToggle = document.getElementById("menuToggle");
+const navMenu = document.getElementById("navMenu");
 
-const mobileMenu =
-    document.getElementById("mobileMenu");
+if (menuToggle && navMenu) {
 
+    menuToggle.addEventListener("click", function () {
 
-menuToggle.addEventListener(
-    "click",
-    function () {
+        navMenu.classList.toggle("active");
 
-        mobileMenu.classList.toggle("active");
+        const icon = menuToggle.querySelector("i");
 
+        if (navMenu.classList.contains("active")) {
 
-        const icon =
-            menuToggle.querySelector("i");
-
-
-        if (
-            mobileMenu.classList.contains("active")
-        ) {
-
-            icon.classList.remove(
-                "fa-bars"
-            );
-
-            icon.classList.add(
-                "fa-xmark"
-            );
+            icon.classList.remove("fa-bars");
+            icon.classList.add("fa-xmark");
 
         } else {
 
-            icon.classList.remove(
-                "fa-xmark"
-            );
-
-            icon.classList.add(
-                "fa-bars"
-            );
+            icon.classList.remove("fa-xmark");
+            icon.classList.add("fa-bars");
 
         }
 
-    }
-);
+    });
 
 
-/* =========================================
-   CLOSE MOBILE MENU
-========================================= */
+    navMenu.querySelectorAll("a").forEach(function (link) {
 
-const mobileLinks =
-    mobileMenu.querySelectorAll("a");
+        link.addEventListener("click", function () {
 
+            navMenu.classList.remove("active");
 
-mobileLinks.forEach(function(link) {
+            const icon = menuToggle.querySelector("i");
 
-    link.addEventListener(
-        "click",
-        function() {
-
-            mobileMenu.classList.remove(
-                "active"
-            );
-
-
-            const icon =
-                menuToggle.querySelector("i");
-
-
-            icon.classList.remove(
-                "fa-xmark"
-            );
-
-            icon.classList.add(
-                "fa-bars"
-            );
-
-        }
-    );
-
-});
-
-
-/* =========================================
-   BACK TO TOP
-========================================= */
-
-const backToTop =
-    document.getElementById("backToTop");
-
-
-window.addEventListener(
-    "scroll",
-    function() {
-
-        if (window.scrollY > 500) {
-
-            backToTop.classList.add(
-                "show"
-            );
-
-        } else {
-
-            backToTop.classList.remove(
-                "show"
-            );
-
-        }
-
-    }
-);
-
-
-backToTop.addEventListener(
-    "click",
-    function() {
-
-        window.scrollTo({
-
-            top: 0,
-
-            behavior: "smooth"
+            icon.classList.remove("fa-xmark");
+            icon.classList.add("fa-bars");
 
         });
 
-    }
-);
+    });
+
+}
 
 
-/* =========================================
-   ACTIVE NAVIGATION
-========================================= */
+/* =========================
+   CURRENT YEAR
+========================= */
 
-const sections =
-    document.querySelectorAll(
-        "section[id]"
-    );
+const yearElement = document.getElementById("year");
 
-const navLinks =
-    document.querySelectorAll(
-        ".nav-link"
-    );
+if (yearElement) {
+
+    yearElement.textContent = new Date().getFullYear();
+
+}
 
 
-window.addEventListener(
-    "scroll",
-    function() {
+/* =========================
+   BACK TO TOP
+========================= */
 
-        let current = "";
+const backToTop = document.getElementById("backToTop");
 
+if (backToTop) {
 
-        sections.forEach(
-            function(section) {
+    window.addEventListener("scroll", function () {
 
-                const sectionTop =
-                    section.offsetTop - 150;
+        if (window.scrollY > 500) {
 
-                const sectionHeight =
-                    section.offsetHeight;
-
-
-                if (
-                    window.scrollY >= sectionTop &&
-                    window.scrollY <
-                    sectionTop + sectionHeight
-                ) {
-
-                    current =
-                        section.getAttribute("id");
-
-                }
-
-            }
-        );
-
-
-        navLinks.forEach(
-            function(link) {
-
-                link.classList.remove(
-                    "active"
-                );
-
-
-                if (
-                    link.getAttribute("href") ===
-                    "#" + current
-                ) {
-
-                    link.classList.add(
-                        "active"
-                    );
-
-                }
-
-            }
-        );
-
-    }
-);
-
-
-/* =========================================
-   HEADER SCROLL EFFECT
-========================================= */
-
-const header =
-    document.getElementById("header");
-
-
-window.addEventListener(
-    "scroll",
-    function() {
-
-        if (window.scrollY > 50) {
-
-            header.classList.add(
-                "scrolled"
-            );
+            backToTop.classList.add("show");
 
         } else {
 
-            header.classList.remove(
-                "scrolled"
-            );
+            backToTop.classList.remove("show");
 
         }
 
-    }
-);
+    });
 
 
-/* =========================================
-   IMAGE LOAD EFFECT
-========================================= */
+    backToTop.addEventListener("click", function () {
 
-const images =
-    document.querySelectorAll("img");
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
 
+    });
 
-images.forEach(function(image) {
-
-    image.addEventListener(
-        "load",
-        function() {
-
-            image.classList.add(
-                "loaded"
-            );
-
-        }
-    );
+}
+```
 
 });
-
-
-/* =========================================
-   CURRENT YEAR
-========================================= */
-
-const yearElements =
-    document.querySelectorAll(
-        ".current-year"
-    );
-
-
-yearElements.forEach(
-    function(element) {
-
-        element.textContent =
-            new Date().getFullYear();
-
-    }
-);
